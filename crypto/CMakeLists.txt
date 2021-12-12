@@ -26,7 +26,6 @@ endif()
 if(HOST_ASM_ELF_X86_64)
 	set(
 		ASM_X86_64_ELF_SRC
-		aes/aes-elf-x86_64.S
 		aes/bsaes-elf-x86_64.S
 		aes/vpaes-elf-x86_64.S
 		aes/aesni-elf-x86_64.S
