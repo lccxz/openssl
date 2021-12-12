@@ -11,10 +11,9 @@ include(CheckTypeSize)
 option(ENABLE_ASM "Enable assembly" ON)
 
 set(OPENSSL_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
-set(OPENSSL_LIBRARIES crypto ssl tls)
+set(OPENSSL_LIBRARIES crypto ssl)
 set(OPENSSL_CRYPTO_LIBRARY crypto)
 set(OPENSSL_SSL_LIBRARY ssl)
-set(OPENSSL_TLS_LIBRARY)
 
 if(CMAKE_SYSTEM_NAME MATCHES "Linux")
 	add_definitions(-D_DEFAULT_SOURCE)
@@ -190,6 +189,5 @@ add_definitions(-DSIZEOF_TIME_T=${SIZEOF_TIME_T})
 
 add_subdirectory(crypto)
 add_subdirectory(ssl)
-add_subdirectory(tls)
 
 set(OPENSSL_FOUND 1)
