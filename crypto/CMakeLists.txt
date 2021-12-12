@@ -1101,17 +1101,6 @@ else()
 	endif()
 endif()
 
-file(READ ${CMAKE_CURRENT_SOURCE_DIR}/crypto.sym SYMS)
-foreach(SYM IN LISTS CRYPTO_UNEXPORT)
-	string(REPLACE "${SYM}\n" "" SYMS ${SYMS})
-endforeach()
-file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/crypto_p.sym ${SYMS})
-if(EXTRA_EXPORT)
-	list(SORT EXTRA_EXPORT)
-	foreach(SYM IN LISTS EXTRA_EXPORT)
-		file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/crypto_p.sym "${SYM}\n")
-	endforeach()
-endif()
 
 set(LIBTLS_EXTRA_EXPORT ${EXTRA_EXPORT} PARENT_SCOPE)
 
