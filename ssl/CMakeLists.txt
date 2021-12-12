@@ -64,11 +64,4 @@ target_include_directories(ssl
 	PUBLIC
 		../include)
 
-export_symbol(ssl ${CMAKE_CURRENT_SOURCE_DIR}/ssl.sym)
 target_link_libraries(ssl crypto ${PLATFORM_LIBS})
-set_target_properties(ssl PROPERTIES
-	OUTPUT_NAME ssl${SSL_POSTFIX}
-	ARCHIVE_OUTPUT_NAME ssl${SSL_POSTFIX})
-set_target_properties(ssl PROPERTIES VERSION ${SSL_VERSION}
-	SOVERSION ${SSL_MAJOR_VERSION})
-
