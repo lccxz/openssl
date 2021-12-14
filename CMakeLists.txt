@@ -4,6 +4,7 @@ project(OpenSSL VERSION 3.1)
 
 set(BUILD_SHARED_LIBS OFF PARENT_SCOPE)
 set(CMAKE_FIND_LIBRARY_SUFFIXES ".a" PARENT_SCOPE)
+set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++" PARENT_SCOPE)
 
 if (EXISTS "${PROJECT_SOURCE_DIR}/libssl.a")
     # message(STATUS "${PROJECT_SOURCE_DIR}/libssl.a EXISTS")
