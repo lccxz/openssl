@@ -5,18 +5,23 @@ project(OpenSSL VERSION 3.1)
 set(BUILD_SHARED_LIBS OFF PARENT_SCOPE)
 set(CMAKE_FIND_LIBRARY_SUFFIXES ".a" PARENT_SCOPE)
 
+if (EXISTS "${PROJECT_SOURCE_DIR}/libssl.a")
+    # message(STATUS "${PROJECT_SOURCE_DIR}/libssl.a EXISTS")
+else()
+    execute_process(
+        WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
+        COMMAND "perl" "Configure"
+    )
+    execute_process(
+        WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
+        COMMAND "make"
+    )
+endif()
+
 set(OPENSSL_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include PARENT_SCOPE)
 set(OPENSSL_LIBRARIES libcrypto libssl PARENT_SCOPE)
 set(OPENSSL_CRYPTO_LIBRARY "${PROJECT_SOURCE_DIR}/libcrypto.a" PARENT_SCOPE)
 set(OPENSSL_SSL_LIBRARY "${PROJECT_SOURCE_DIR}/libssl.a" PARENT_SCOPE)
 set(OPENSSL_ROOT_DIR "${PROJECT_SOURCE_DIR}" PARENT_SCOPE)
-
-if (EXISTS ${OPENSSL_SSL_LIBRARY})
-    message(DEBUG "${PROJECT_SOURCE_DIR}/libssl.a EXISTS")
-else()
-    execute_process(COMMAND "perl" "Configure"
-        COMMAND "make"
-        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
-endif()
 
 find_library(OpenSSL NAMES OpenSSL HINTS "${PROJECT_SOURCE_DIR}")
