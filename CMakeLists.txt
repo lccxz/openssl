@@ -4,10 +4,10 @@ project(OpenSSL VERSION 3.1)
 
 get_filename_component(LIBDIR ${PROJECT_SOURCE_DIR} DIRECTORY)
 
-if (NOT EXISTS "${LIBDIR}/install/openssl/lib64/libssl.a")
+if (NOT EXISTS "${LIBDIR}/install/openssl/lib/libssl.a")
     execute_process(
         WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
-        COMMAND "perl" "Configure"
+        COMMAND "./config"
             "--prefix=${LIBDIR}/install/openssl"
             "--openssldir=${LIBDIR}/install/ssl"
         RESULT_VARIABLE ret
