@@ -2,9 +2,7 @@ cmake_minimum_required(VERSION 3.11)
 
 project(OpenSSL VERSION 3.1)
 
-if (EXISTS "${PROJECT_SOURCE_DIR}/libssl.a")
-    # message(STATUS "${PROJECT_SOURCE_DIR}/libssl.a EXISTS")
-else()
+if (NOT EXISTS "${PROJECT_SOURCE_DIR}/libssl.a")
     execute_process(
         WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
         COMMAND "perl" "Configure"
