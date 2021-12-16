@@ -6,11 +6,20 @@ if (NOT EXISTS "${PROJECT_SOURCE_DIR}/libssl.a")
     execute_process(
         WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
         COMMAND "perl" "Configure"
+        RESULT_VARIABLE ret
     )
+    if(ret NOT EQUAL "0")
+        message(FATAL_ERROR "OpenSSL configure error")
+    endif()
+
     execute_process(
         WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
         COMMAND "make"
+        RESULT_VARIABLE ret
     )
+    if(ret NOT EQUAL "0")
+        message(FATAL_ERROR "OpenSSL make error")
+    endif()
 endif()
 
 set(OPENSSL_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include PARENT_SCOPE)
