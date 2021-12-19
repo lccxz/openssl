@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.11)
 
-project(OpenSSL VERSION 3.1)
+project(OpenSSL VERSION 1.1)
 
 get_filename_component(LIBDIR ${PROJECT_SOURCE_DIR} DIRECTORY)
 
