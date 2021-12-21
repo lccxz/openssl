@@ -35,5 +35,4 @@ if (NOT EXISTS "${LIBDIR}/install/openssl/lib/libssl.a")
     endif()
 endif()
 
-set(OPENSSL_ROOT_DIR "${LIBDIR}/install/openssl")
-find_package(OpenSSL REQUIRED)
+set(OPENSSL_ROOT_DIR "${LIBDIR}/install/openssl" PARENT_SCOPE)
